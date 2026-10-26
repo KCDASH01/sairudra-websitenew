@@ -160,7 +160,7 @@ export const QuoteCalculator: React.FC<QuoteCalculatorProps> = ({ initialCourseI
             </div>
 
             {/* Student & Course Summary Details */}
-            <div className="grid grid-cols-2 gap-4 py-6 text-xs sm:text-sm border-b border-slate-200">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-6 text-xs sm:text-sm border-b border-slate-200">
               <div>
                 <p className="text-slate-500 font-medium text-xs">Applicant Name</p>
                 <p className="font-bold text-slate-900 text-sm">{submittedQuote.fullName}</p>

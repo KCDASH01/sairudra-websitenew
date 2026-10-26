@@ -42,28 +42,52 @@ export const ThemeCustomizerModal: React.FC<ThemeCustomizerModalProps> = ({
 
   const palettes: { id: ColorPalette; name: string; description: string; colors: string[] }[] = [
     {
+      id: 'rich-cobalt',
+      name: 'Rich Cobalt & Imperial Gold (Recommended)',
+      description: 'Lustrous, vibrant cobalt blue paired with rich navy and regal gold accents.',
+      colors: ['#1D4ED8', '#0F172A', '#D97706']
+    },
+    {
+      id: 'oxford-navy',
+      name: 'Deep Oxford Navy & Sky Azure',
+      description: 'Prestigious academic Oxford navy with brilliant sky-blue and silver highlights.',
+      colors: ['#0B192C', '#0284C7', '#38BDF8']
+    },
+    {
+      id: 'midnight-indigo',
+      name: 'Midnight Indigo & Warm Amber',
+      description: 'Regal deep indigo paired with sapphire depth and warm amber glow.',
+      colors: ['#312E81', '#1E40AF', '#F59E0B']
+    },
+    {
+      id: 'prussian-marine',
+      name: 'Prussian Marine & Platinum',
+      description: 'Authoritative deep maritime blue with crisp platinum and azure accents.',
+      colors: ['#002D62', '#0369A1', '#E2E8F0']
+    },
+    {
+      id: 'royal-sapphire',
+      name: 'Royal Sapphire & Gold',
+      description: 'Vibrant sapphire blue combined with rich slate and warm luxury gold.',
+      colors: ['#2563EB', '#0F172A', '#F59E0B']
+    },
+    {
       id: 'crimson-navy',
       name: 'Crimson & Heritage Navy (Authentic Sairudra)',
       description: 'Matches Sairudra’s original official emblem with deep crimson, navy & warm gold.',
       colors: ['#991B1B', '#0F172A', '#D97706']
     },
     {
-      id: 'royal-sapphire',
-      name: 'Royal Sapphire & Gold',
-      description: 'Prestigious academic university aesthetic with rich royal blue and warm gold.',
-      colors: ['#1D4ED8', '#0F172A', '#F59E0B']
+      id: 'emerald-gold',
+      name: 'Emerald Healing & Warm Bronze',
+      description: 'Organic healthcare & holistic nursing palette with forest emerald and bronze.',
+      colors: ['#047857', '#064E3B', '#CA8A04']
     },
     {
       id: 'clinical-teal',
       name: 'Clinical Teal & Slate',
       description: 'Contemporary medical research style with clinical teal and dark slate.',
       colors: ['#0F766E', '#0F172A', '#14B8A6']
-    },
-    {
-      id: 'emerald-gold',
-      name: 'Emerald Healing & Warm Bronze',
-      description: 'Organic healthcare & holistic nursing palette with forest emerald and bronze.',
-      colors: ['#047857', '#064E3B', '#CA8A04']
     }
   ];
 

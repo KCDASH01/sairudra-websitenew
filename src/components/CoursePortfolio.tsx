@@ -1,16 +1,42 @@
 import React, { useState } from 'react';
-import { Course } from '../types';
+import { Course, ColorPalette } from '../types';
 import { COURSES_DATA } from '../data/coursesData';
 import { CourseDetailModal } from './CourseDetailModal';
 import { ArrowRight, Clock, Users, BookOpen, Check, Calculator, Sparkles, FileText } from 'lucide-react';
 
 interface CoursePortfolioProps {
   onRequestQuote: (courseId?: string) => void;
+  colorPalette?: ColorPalette;
 }
 
-export const CoursePortfolio: React.FC<CoursePortfolioProps> = ({ onRequestQuote }) => {
+export const CoursePortfolio: React.FC<CoursePortfolioProps> = ({
+  onRequestQuote,
+  colorPalette = 'rich-cobalt',
+}) => {
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'degree' | 'diploma' | 'allied'>('all');
   const [activeCourseDetail, setActiveCourseDetail] = useState<Course | null>(null);
+
+  const getButtonClass = () => {
+    switch (colorPalette) {
+      case 'rich-cobalt':
+        return 'bg-blue-700 hover:bg-blue-800 text-white';
+      case 'oxford-navy':
+        return 'bg-[#0B192C] hover:bg-[#1E3E62] text-white';
+      case 'midnight-indigo':
+        return 'bg-indigo-900 hover:bg-indigo-950 text-white';
+      case 'prussian-marine':
+        return 'bg-[#002D62] hover:bg-[#001D40] text-white';
+      case 'royal-sapphire':
+        return 'bg-blue-600 hover:bg-blue-700 text-white';
+      case 'crimson-navy':
+        return 'bg-red-800 hover:bg-red-900 text-white';
+      case 'emerald-gold':
+        return 'bg-emerald-700 hover:bg-emerald-800 text-white';
+      case 'clinical-teal':
+      default:
+        return 'bg-teal-700 hover:bg-teal-800 text-white';
+    }
+  };
 
   const filteredCourses = selectedCategory === 'all'
     ? COURSES_DATA
@@ -37,7 +63,7 @@ export const CoursePortfolio: React.FC<CoursePortfolioProps> = ({ onRequestQuote
           </div>
 
           {/* Interactive Filter Control - Tabs (Segmented control per guidelines) */}
-          <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-xl border border-slate-200 self-start md:self-auto shrink-0">
+          <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-xl border border-slate-200 self-start md:self-auto overflow-x-auto max-w-full shrink-0">
             <button
               type="button"
               onClick={() => setSelectedCategory('all')}
@@ -174,7 +200,7 @@ export const CoursePortfolio: React.FC<CoursePortfolioProps> = ({ onRequestQuote
                   <button
                     type="button"
                     onClick={() => onRequestQuote(course.id)}
-                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-teal-700 hover:bg-teal-800 text-white text-xs font-bold transition-all shadow-xs cursor-pointer"
+                    className={`inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg text-xs font-bold transition-all shadow-xs cursor-pointer ${getButtonClass()}`}
                   >
                     <Calculator className="w-3.5 h-3.5" />
                     <span>Get Quote</span>

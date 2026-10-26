@@ -1,10 +1,35 @@
 import React, { useState } from 'react';
 import { CAMPUS_FACILITIES } from '../data/coursesData';
-import { Facility } from '../types';
+import { Facility, ColorPalette } from '../types';
 import { Check, Building2, Sparkles } from 'lucide-react';
 
-export const Facilities: React.FC = () => {
+interface FacilitiesProps {
+  colorPalette?: ColorPalette;
+}
+
+export const Facilities: React.FC<FacilitiesProps> = ({ colorPalette = 'rich-cobalt' }) => {
   const [activeFacility, setActiveFacility] = useState<Facility>(CAMPUS_FACILITIES[0]);
+
+  const getActiveTabClass = () => {
+    switch (colorPalette) {
+      case 'rich-cobalt':
+      case 'royal-sapphire':
+        return 'bg-blue-700 text-white border-blue-700 shadow-xs';
+      case 'oxford-navy':
+        return 'bg-[#0B192C] text-white border-[#0B192C] shadow-xs';
+      case 'midnight-indigo':
+        return 'bg-indigo-900 text-white border-indigo-900 shadow-xs';
+      case 'prussian-marine':
+        return 'bg-[#002D62] text-white border-[#002D62] shadow-xs';
+      case 'crimson-navy':
+        return 'bg-red-800 text-white border-red-800 shadow-xs';
+      case 'emerald-gold':
+        return 'bg-emerald-700 text-white border-emerald-700 shadow-xs';
+      case 'clinical-teal':
+      default:
+        return 'bg-teal-700 text-white border-teal-700 shadow-xs';
+    }
+  };
 
   return (
     <section id="facilities" className="py-20 md:py-28 bg-slate-50 border-b border-slate-200" aria-label="Campus Facilities & Clinical Labs">
@@ -84,7 +109,7 @@ export const Facilities: React.FC = () => {
                   onClick={() => setActiveFacility(facility)}
                   className={`p-2.5 rounded-xl border text-center text-xs font-semibold transition-all cursor-pointer truncate flex items-center justify-center ${
                     activeFacility.id === facility.id
-                      ? 'bg-red-800 text-white border-red-800 shadow-xs'
+                      ? getActiveTabClass()
                       : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100 hover:text-slate-900'
                   }`}
                 >

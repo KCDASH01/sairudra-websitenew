@@ -13,28 +13,44 @@ export const Hero: React.FC<HeroProps> = ({
   onRequestQuote,
   onExplorePrograms,
   onDownloadBrochure,
-  colorPalette = 'crimson-navy',
+  colorPalette = 'rich-cobalt',
 }) => {
   const getPrimaryButtonClass = () => {
     switch (colorPalette) {
-      case 'crimson-navy':
-        return 'bg-red-800 hover:bg-red-900 active:bg-red-950 text-white focus-visible:ring-red-700';
+      case 'rich-cobalt':
+        return 'bg-blue-700 hover:bg-blue-800 active:bg-blue-900 text-white focus-visible:ring-blue-600 shadow-blue-800/30';
+      case 'oxford-navy':
+        return 'bg-[#0B192C] hover:bg-[#1E3E62] active:bg-black text-white focus-visible:ring-sky-500 border border-sky-400/40 shadow-xl';
+      case 'midnight-indigo':
+        return 'bg-indigo-900 hover:bg-indigo-950 active:bg-black text-white focus-visible:ring-indigo-600 shadow-indigo-900/30';
+      case 'prussian-marine':
+        return 'bg-[#002D62] hover:bg-[#001D40] active:bg-black text-white focus-visible:ring-blue-700 shadow-blue-950/30';
       case 'royal-sapphire':
-        return 'bg-blue-700 hover:bg-blue-800 active:bg-blue-900 text-white focus-visible:ring-blue-600';
+        return 'bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white focus-visible:ring-blue-500 shadow-blue-600/30';
+      case 'crimson-navy':
+        return 'bg-red-800 hover:bg-red-900 active:bg-red-950 text-white focus-visible:ring-red-700 shadow-red-900/30';
       case 'emerald-gold':
-        return 'bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 text-white focus-visible:ring-emerald-600';
+        return 'bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 text-white focus-visible:ring-emerald-600 shadow-emerald-900/30';
       case 'clinical-teal':
       default:
-        return 'bg-teal-700 hover:bg-teal-800 active:bg-teal-900 text-white focus-visible:ring-teal-600';
+        return 'bg-teal-700 hover:bg-teal-800 active:bg-teal-900 text-white focus-visible:ring-teal-600 shadow-teal-900/30';
     }
   };
 
   const getHeadingHighlightClass = () => {
     switch (colorPalette) {
+      case 'rich-cobalt':
+        return 'text-blue-700';
+      case 'oxford-navy':
+        return 'text-[#0B192C]';
+      case 'midnight-indigo':
+        return 'text-indigo-900';
+      case 'prussian-marine':
+        return 'text-[#002D62]';
+      case 'royal-sapphire':
+        return 'text-blue-600';
       case 'crimson-navy':
         return 'text-red-800';
-      case 'royal-sapphire':
-        return 'text-blue-800';
       case 'emerald-gold':
         return 'text-emerald-800';
       case 'clinical-teal':
@@ -43,31 +59,54 @@ export const Hero: React.FC<HeroProps> = ({
     }
   };
 
+  const getAmbientGlowClass = () => {
+    switch (colorPalette) {
+      case 'rich-cobalt':
+      case 'royal-sapphire':
+        return 'bg-blue-200/40';
+      case 'oxford-navy':
+        return 'bg-sky-200/40';
+      case 'midnight-indigo':
+        return 'bg-indigo-200/40';
+      case 'prussian-marine':
+        return 'bg-cyan-200/40';
+      case 'crimson-navy':
+        return 'bg-red-100/30';
+      case 'emerald-gold':
+        return 'bg-emerald-100/30';
+      case 'clinical-teal':
+      default:
+        return 'bg-teal-100/30';
+    }
+  };
+
   return (
-    <section id="home" className="relative bg-gradient-to-b from-white via-slate-50 to-slate-100/40 pt-10 pb-20 md:pt-16 md:pb-28 overflow-hidden">
+    <section id="home" className="relative bg-gradient-to-b from-white via-slate-50 to-slate-100/50 pt-10 pb-20 md:pt-16 md:pb-28 overflow-hidden">
       {/* Subtle background radial glows for high-contrast visual depth */}
-      <div className="absolute top-0 right-0 -mr-48 -mt-48 w-96 h-96 rounded-full bg-red-100/30 blur-3xl pointer-events-none" />
+      <div className={`absolute top-0 right-0 -mr-48 -mt-48 w-96 h-96 rounded-full blur-3xl pointer-events-none ${getAmbientGlowClass()}`} />
       <div className="absolute bottom-0 left-0 -ml-48 -mb-48 w-96 h-96 rounded-full bg-slate-200/40 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Editorial Headline & Value Propositions */}
           <div className="lg:col-span-7 space-y-6">
-            {/* Clean Editorial Kicker (No Pill Enclosures) */}
-            <div className="flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-slate-800">
-              <span className="w-2 h-2 rounded-full bg-red-700 animate-pulse" />
-              <span>Admissions Open 2026–2027</span>
-              <span aria-hidden="true" className="text-slate-300">·</span>
-              <span className="text-slate-600">DMET Odisha & OUHS Affiliated</span>
+            {/* Clean Editorial Kicker - Responsive line wrap */}
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-bold tracking-wider uppercase text-slate-700">
+              <span className="inline-flex items-center gap-1.5 text-blue-800">
+                <span className="w-2 h-2 rounded-full bg-blue-700 animate-pulse shrink-0" />
+                <span>Admissions 2026–2027</span>
+              </span>
+              <span aria-hidden="true" className="text-slate-400">·</span>
+              <span className="text-slate-600">OUHS &amp; DMET Approved</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5.5xl font-extrabold text-slate-950 tracking-tight leading-[1.14]">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-5.5xl font-extrabold text-slate-950 tracking-tight leading-[1.22] sm:leading-[1.14]">
               Shaping Compassionate, <br className="hidden sm:inline" />
               <span className={getHeadingHighlightClass()}>Clinically Adept</span> Healthcare Leaders.
             </h1>
 
-            <p className="text-base sm:text-lg text-slate-700 leading-relaxed max-w-2xl font-normal">
-              Sairudra College of Nursing & Group of Institutions delivers gold-standard training in <strong className="font-semibold text-slate-900">B.Sc Nursing, Post Basic B.Sc, GNM, ANM, D.Pharma, and DMLT</strong>. We combine advanced high-fidelity simulation labs with intensive bedside rotations across premier multi-specialty hospitals.
+            <p className="text-sm sm:text-lg text-slate-700 leading-relaxed max-w-2xl font-normal">
+              Sairudra College of Nursing &amp; Group of Institutions delivers gold-standard training in <strong className="font-semibold text-slate-900">B.Sc Nursing, Post Basic B.Sc, GNM, ANM, D.Pharma, and DMLT</strong>. We combine advanced simulation labs with intensive bedside rotations across premier multi-specialty hospitals.
             </p>
 
             {/* Value checklist */}

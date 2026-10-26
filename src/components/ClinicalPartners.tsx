@@ -1,7 +1,32 @@
 import React from 'react';
 import { HeartPulse, Stethoscope, Building, Users, Award, CheckCircle } from 'lucide-react';
+import { ColorPalette } from '../types';
 
-export const ClinicalPartners: React.FC = () => {
+interface ClinicalPartnersProps {
+  colorPalette?: ColorPalette;
+}
+
+export const ClinicalPartners: React.FC<ClinicalPartnersProps> = ({ colorPalette = 'rich-cobalt' }) => {
+  const getBadgeClass = () => {
+    switch (colorPalette) {
+      case 'rich-cobalt':
+      case 'royal-sapphire':
+        return 'bg-blue-700 text-white';
+      case 'oxford-navy':
+        return 'bg-[#0B192C] text-white';
+      case 'midnight-indigo':
+        return 'bg-indigo-900 text-white';
+      case 'prussian-marine':
+        return 'bg-[#002D62] text-white';
+      case 'crimson-navy':
+        return 'bg-red-800 text-white';
+      case 'emerald-gold':
+        return 'bg-emerald-700 text-white';
+      case 'clinical-teal':
+      default:
+        return 'bg-teal-700 text-white';
+    }
+  };
   const rotationStats = [
     { title: 'District Headquarters Hospital', role: 'Primary Bedside Clinical Training', desc: 'Active rotations across General Medicine, Surgery, ICU, CCU, Pediatrics, and Labor Rooms at DHH Kendrapara.' },
     { title: 'Tertiary Care Partner Hospitals', role: 'Advanced Super-Specialty Training', desc: 'Hands-on clinical exposure in oncology, cardiac care, neuro-surgery, and organ transplant units in Bhubaneswar & Cuttack.' },
@@ -86,7 +111,7 @@ export const ClinicalPartners: React.FC = () => {
 
             {/* Testimonial highlight snippet */}
             <div className="p-5 rounded-2xl bg-teal-50 border border-teal-200 flex items-center gap-4">
-              <div className="w-11 h-11 rounded-full bg-red-800 text-white flex items-center justify-center font-bold text-xs tracking-tight shrink-0 shadow-xs">
+              <div className={`w-11 h-11 rounded-full ${getBadgeClass()} flex items-center justify-center font-bold text-xs tracking-tight shrink-0 shadow-xs`}>
                 100%
               </div>
               <div className="text-xs">

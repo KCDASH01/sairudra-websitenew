@@ -1,11 +1,34 @@
 import React from 'react';
 import { Phone, Mail, MapPin, ShieldCheck, GraduationCap } from 'lucide-react';
+import { ColorPalette } from '../types';
 
 interface FooterProps {
   customLogoUrl?: string | null;
+  colorPalette?: ColorPalette;
 }
 
-export const Footer: React.FC<FooterProps> = ({ customLogoUrl }) => {
+export const Footer: React.FC<FooterProps> = ({ customLogoUrl, colorPalette = 'rich-cobalt' }) => {
+  const getCrestBg = () => {
+    switch (colorPalette) {
+      case 'rich-cobalt':
+      case 'royal-sapphire':
+        return 'bg-blue-700 text-white';
+      case 'oxford-navy':
+        return 'bg-[#0B192C] text-white';
+      case 'midnight-indigo':
+        return 'bg-indigo-900 text-white';
+      case 'prussian-marine':
+        return 'bg-[#002D62] text-white';
+      case 'crimson-navy':
+        return 'bg-red-800 text-white';
+      case 'emerald-gold':
+        return 'bg-emerald-700 text-white';
+      case 'clinical-teal':
+      default:
+        return 'bg-teal-700 text-white';
+    }
+  };
+
   return (
     <footer className="bg-slate-950 text-slate-300 pt-16 pb-12 border-t border-slate-800" aria-label="Site Footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,7 +42,7 @@ export const Footer: React.FC<FooterProps> = ({ customLogoUrl }) => {
                   <img src={customLogoUrl} alt="Sairudra Logo" className="max-w-full max-h-full object-contain" />
                 </div>
               ) : (
-                <div className="w-10 h-10 rounded-xl bg-red-800 flex items-center justify-center text-white font-bold shadow-md">
+                <div className={`w-10 h-10 rounded-xl ${getCrestBg()} flex items-center justify-center font-bold shadow-md`}>
                   <GraduationCap className="w-5 h-5 text-amber-300" />
                 </div>
               )}

@@ -73,7 +73,15 @@ export interface FAQItem {
   category: string;
 }
 
-export type ColorPalette = 'crimson-navy' | 'royal-sapphire' | 'clinical-teal' | 'emerald-gold';
+export type ColorPalette =
+  | 'rich-cobalt'
+  | 'oxford-navy'
+  | 'midnight-indigo'
+  | 'prussian-marine'
+  | 'royal-sapphire'
+  | 'crimson-navy'
+  | 'emerald-gold'
+  | 'clinical-teal';
 export type FontOption = 'prestigious-serif' | 'modern-sans' | 'geometric-poppins';
 
 export interface ThemeSettings {
